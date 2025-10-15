@@ -1,0 +1,8 @@
+{
+"chipas": [
+{"id": 1, "nombre": "Chipá Tradicional", "precio_base": 2000},
+{"id": 2, "nombre": "Chipá con Queso", "precio_base": 2200},
+{"id": 3, "nombre": "Chipá con Salame", "precio_base": 2200}
+],
+"version": "2025-10-15T12:00:00Z"
+}
