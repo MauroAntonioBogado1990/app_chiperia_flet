@@ -31,7 +31,7 @@ chipas = [
 # Número de WhatsApp receptor en formato internacional (sin +).
 # Ejemplo Argentina: 54911xxxxxxx (54 código país, 9 para móvil cuando corresponde, 11 código de área)
 # Cambiá este valor por el número al que quieras enviar los pedidos.
-WHATSAPP_NUMBER = "5493456267933"
+WHATSAPP_NUMBER = ""
 REMOTE_JSON_URL = "https://raw.githubusercontent.com/MauroAntonioBogado1990/preciosChipas/main/precios.json"  # reemplazá por tu URL raw
 
 def main(page: ft.Page):
@@ -190,6 +190,12 @@ def main(page: ft.Page):
         contenido.append(ft.Divider())
         contenido.append(ft.Text(f"Total: ${total}", weight="bold"))
 
+        # Mostrar alias si el modo de pago es MercadoPago
+        if pago.lower() == "mercadopago":
+            contenido.append(ft.Text("Alias para transferir: emboscadachiperia", italic=True, color=ft.Colors.BLUE_600))
+            contenido.append(ft.Text("De: NaranjaX", italic=True, color=ft.Colors.BLUE_600))
+            contenido.append(ft.Text("A nombre de : María Inés Portillo", italic=True, color=ft.Colors.BLUE_600))
+
         # Mostrar resumen inline y habilitar botón confirmar
         resumen.controls = contenido
         boton_confirmar.visible = True
@@ -222,7 +228,7 @@ def main(page: ft.Page):
         boton_confirmar.on_click = enviar_confirm
         page.update()
 
-    boton_agregar = ft.ElevatedButton(text="Pedir", on_click=agregar_pedido)
+    boton_agregar = ft.ElevatedButton(text="Cotizar", on_click=agregar_pedido)
 
     # Resumen y botón confirmar (inicialmente oculto)
     resumen = ft.Column()
